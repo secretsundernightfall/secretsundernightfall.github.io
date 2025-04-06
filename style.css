@@ -1,0 +1,414 @@
+/* Basic Reset & Body Styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* Use Roboto, fallback to sans-serif */
+    background-color: #1a1d21; /* Dark, slightly blue-ish gray */
+    color: #e0e0e0; /* Light gray text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Hide scrollbars */
+}
+
+/* Main Menu Container */
+.main-menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(10, 10, 15, 0.6); /* Slightly darker, semi-transparent */
+    border: 1px solid #007acc; /* Portal blue border */
+    box-shadow: 0 0 15px rgba(0, 122, 204, 0.5); /* Blue glow effect */
+    min-width: 350px;
+}
+
+/* Header Styling */
+.menu-header {
+    margin-bottom: 50px;
+}
+
+.menu-header h1 {
+    font-size: 2.8em;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(0, 122, 204, 0.7); /* Blue text glow */
+}
+
+.menu-header h2 {
+    font-size: 1.2em;
+    color: #00a1ff; /* Brighter blue for subtitle */
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* Menu Options Styling */
+.menu-options ul {
+    list-style: none; /* Remove bullet points */
+}
+
+.menu-options li {
+    margin-bottom: 18px; /* Spacing between items */
+}
+
+.menu-item {
+    display: inline-block; /* Allows padding/width */
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 1.4em;
+    font-weight: 400;
+    padding: 10px 30px;
+    border: 1px solid transparent; /* Placeholder for hover effect */
+    min-width: 250px; /* Ensure buttons have similar width */
+    text-align: center;
+    transition: all 0.3s ease; /* Smooth transitions */
+}
+
+/* Menu Item Hover/Focus Effects */
+.menu-item:hover,
+.menu-item:focus { /* Added focus for accessibility */
+    color: #ffffff; /* White text on hover */
+    background-color: rgba(0, 122, 204, 0.2); /* Subtle blue background */
+    border: 1px solid #00a1ff; /* Brighter blue border */
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 10px rgba(0, 161, 255, 0.5); /* Glow on hover */
+    transform: scale(1.03); /* Slight zoom */
+    cursor: pointer;
+}
+
+/* Footer Styling */
+.menu-footer {
+    margin-top: 40px;
+    font-size: 0.8em;
+    color: #666;
+    font-weight: 300;
+}
+
+/* --- Existing Styles from previous steps --- */
+/* ... (Keep all the previous CSS) ... */
+
+/* Helper class to hide elements */
+.hidden {
+    display: none !important; /* Use !important to ensure it overrides other display properties */
+}
+
+/* Options Screen Container Styling (Similar to main menu) */
+.options-container {
+    display: flex; /* Use flex for layout */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(10, 10, 15, 0.7); /* Slightly more opaque */
+    border: 1px solid #ff9900; /* Portal Orange border */
+    box-shadow: 0 0 15px rgba(255, 153, 0, 0.5); /* Orange glow effect */
+    min-width: 400px;
+    color: #e0e0e0;
+}
+
+/* Style for the controls area */
+.options-controls {
+    margin: 30px 0;
+    width: 90%; /* Control width */
+}
+
+.option-item {
+    display: flex;
+    justify-content: space-between; /* Space out label and control */
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid #444; /* Separator line */
+}
+
+.option-item label {
+    font-size: 1.1em;
+    margin-right: 15px;
+    color: #ccc;
+    flex-basis: 40%; /* Give label some space */
+    text-align: left;
+}
+
+/* Style the Volume Slider */
+input[type="range"] {
+    flex-grow: 1; /* Allow slider to take remaining space */
+    cursor: pointer;
+    height: 8px;
+    background: #555; /* Track background */
+    border-radius: 5px;
+    appearance: none; /* Override default look */
+    -webkit-appearance: none;
+}
+/* Style slider thumb (Chrome/Edge/Safari) */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #ff9900; /* Orange thumb */
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #fff;
+}
+/* Style slider thumb (Firefox) */
+input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: #ff9900;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #fff;
+}
+
+#volume-value {
+    font-size: 1em;
+    color: #fff;
+    min-width: 40px; /* Prevent layout shift */
+    text-align: right;
+}
+
+/* Style the Dropdown Select */
+#difficulty-select {
+    flex-grow: 1;
+    padding: 8px 10px;
+    background-color: #333;
+    color: #ddd;
+    border: 1px solid #555;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+}
+#difficulty-select:focus {
+     outline: none;
+     border-color: #ff9900; /* Orange border on focus */
+     box-shadow: 0 0 5px rgba(255, 153, 0, 0.5);
+}
+
+
+/* Style the Back Button Area */
+.options-navigation {
+    margin-top: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Apply menu-item styles also to the specific button ID for consistency */
+#back-to-main-menu {
+    /* Inherits .menu-item styles, but ensure button look if needed */
+    border-radius: 4px; /* Slight rounding typical for buttons */
+    background-color: rgba(80, 80, 90, 0.4); /* Default subtle background */
+}
+
+#back-to-main-menu:hover,
+#back-to-main-menu:focus {
+    background-color: rgba(255, 153, 0, 0.2); /* Subtle orange background */
+    border: 1px solid #ffae42; /* Brighter orange border */
+    box-shadow: 0 0 10px rgba(255, 174, 66, 0.5); /* Orange Glow on hover */
+     transform: scale(1.03); /* Keep the scaling effect */
+}
+
+/* --- Keep all existing styles --- */
+/* ... (Styles for body, main-menu-container, options-container, etc.) ... */
+
+/* Chamber Select Screen Container Styling */
+.chamber-select-container {
+    display: flex; /* Use flex for layout */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(220, 220, 230, 0.8); /* Lighter, slightly blue-grey background */
+    border: 1px solid #555; /* Neutral grey border */
+    box-shadow: 0 0 15px rgba(85, 85, 85, 0.4); /* Softer glow */
+    min-width: 450px;
+    color: #1a1d21; /* Darker text for light background */
+}
+
+/* Adjust header color for light background */
+.chamber-select-container .menu-header h2 {
+    color: #005a9e; /* Darker blue */
+}
+
+
+/* Style for the chamber list area */
+.chamber-list {
+    margin: 30px 0;
+    width: 95%; /* Control width */
+    max-height: 40vh; /* Limit height and allow scrolling if needed */
+    overflow-y: auto; /* Add scrollbar if list is too long */
+    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+}
+
+.chamber-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.chamber-list li {
+    margin-bottom: 10px; /* Spacing between items */
+}
+
+/* Style for individual chamber select items */
+.chamber-select-item {
+    display: block; /* Make link take full width */
+    /* Inherits .menu-item styles for padding, transition, base text */
+    background-color: rgba(0, 122, 204, 0.1); /* Very subtle blue background */
+    border: 1px solid transparent; /* Base border */
+    color: #2c3e50; /* Darker text */
+    width: 100%; /* Ensure full width */
+    text-align: left; /* Align text left */
+    padding-left: 20px; /* Indent text a bit */
+    padding-right: 20px;
+}
+
+/* Hover/Focus effects for chamber items */
+.chamber-select-item:hover:not(.disabled),
+.chamber-select-item:focus:not(.disabled) {
+    color: #ffffff; /* White text on hover */
+    background-color: rgba(0, 122, 204, 0.8); /* Stronger blue background */
+    border: 1px solid #00a1ff; /* Brighter blue border */
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 161, 255, 0.5);
+    transform: translateX(5px) scale(1.01); /* Slight move right + scale */
+    cursor: pointer;
+}
+
+/* Style for disabled/locked chamber items */
+.chamber-select-item.disabled {
+    color: #999;
+    background-color: rgba(150, 150, 150, 0.1);
+    cursor: not-allowed;
+    pointer-events: none; /* Make it unclickable */
+}
+.chamber-select-item.disabled::after {
+    content: " (Locked)"; /* Add text indication */
+    font-style: italic;
+    color: #aaa;
+    float: right; /* Position lock text */
+}
+
+
+/* Style the Back Button Area */
+.chamber-select-navigation {
+    margin-top: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Style the back button from chamber select */
+#back-to-main-from-chambers {
+    /* Basic styling from menu-item */
+    background-color: rgba(80, 80, 90, 0.4);
+    color: #e0e0e0; /* Light text for dark button */
+    border-radius: 4px;
+}
+
+#back-to-main-from-chambers:hover,
+#back-to-main-from-chambers:focus {
+    background-color: rgba(0, 122, 204, 0.3); /* Use Blue hover consistent with main menu maybe */
+    border: 1px solid #00a1ff;
+    box-shadow: 0 0 10px rgba(0, 161, 255, 0.5);
+    color: #fff;
+    transform: scale(1.03);
+}
+
+/* Helper class to hide elements */
+.hidden {
+    display: none !important; /* Use !important to ensure it overrides other display properties */
+}
+
+/* --- NEW Styles for Game View --- */
+
+/* Container for the entire game view */
+.game-container {
+    position: fixed; /* Take up the whole screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000; /* Black background behind the canvas */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Hide anything outside */
+}
+
+/* Style the canvas where the game is drawn */
+#game-canvas {
+    display: block; /* Remove potential extra space below canvas */
+    background-color: #111; /* Dark grey background for the scene */
+
+    /* --- 4:3 Aspect Ratio Enforcement --- */
+    /* Make height dependent on width, or width dependent on height */
+    /* This example makes width adapt to height */
+    max-width: calc(100vh * (4 / 3)); /* Max width is 4/3 * viewport height */
+    max-height: 100vh;               /* Max height is full viewport height */
+    width: calc(100vh * (4 / 3));    /* Try to be 4/3 * height */
+    height: 100vh;                   /* Try to be full height */
+
+    /* Fallback/alternative if height calculation isn't perfect */
+    aspect-ratio: 4 / 3;
+}
+
+/* Container for UI elements on top of the game */
+.game-ui {
+    position: absolute; /* Position relative to game-container */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow clicks to go through to the canvas by default */
+    color: white;
+    display: flex; /* Example for layout */
+    flex-direction: column;
+    justify-content: flex-end; /* Put exit button at bottom */
+    align-items: center; /* Center horizontally */
+    padding: 20px;
+}
+
+/* Style interactive UI elements */
+.game-ui button,
+.game-ui a {
+    pointer-events: auto; /* Make buttons clickable */
+}
+
+/* Style the back button specifically */
+.game-back-button {
+    /* Reuse menu-item style for consistency, but customize */
+    padding: 8px 20px;
+    font-size: 1em;
+    background-color: rgba(50, 50, 50, 0.7);
+    border: 1px solid #888;
+    color: #ddd;
+    min-width: 150px;
+    margin-bottom: 10px; /* Spacing from bottom */
+}
+
+.game-back-button:hover {
+    background-color: rgba(80, 80, 80, 0.9);
+    border-color: #ccc;
+    color: #fff;
+    transform: scale(1.05); /* Simple scale feedback */
+}
+
+/* Placeholder for crosshair (add later if needed) */
+/*
+.crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.7);
+}
+*/

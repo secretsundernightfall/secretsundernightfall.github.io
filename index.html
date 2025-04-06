@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal-like Game</title> <!-- Slightly updated title -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Include Three.js using importmap for module loading -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Main Menu (Controls visibility via JS/CSS) -->
+    <div id="main-menu" class="main-menu-container hidden"> <!-- Start hidden, JS will show -->
+        <header class="menu-header">
+            <h1>Aperture Science</h1>
+            <h2>Test Subject Training Hub</h2>
+        </header>
+        <nav class="menu-options">
+            <ul>
+                <!-- Use data-action for JS hooks -->
+                <li><a href="#" class="menu-item" data-action="new-game">New Game</a></li>
+                <li><a href="#" class="menu-item" data-action="continue">Continue</a></li>
+                <li><a href="#" class="menu-item" data-action="options">Options</a></li>
+                <li><a href="#" class="menu-item" data-action="exit">Exit</a></li>
+            </ul>
+        </nav>
+        <footer class="menu-footer">
+            <p>v0.0.1 - Warning: May contain traces of neurotoxin.</p>
+        </footer>
+    </div>
+
+    <!-- Options Screen (Controls visibility via JS/CSS) -->
+    <div id="options-screen" class="options-container hidden">
+         <header class="menu-header">
+             <h2>Options</h2>
+         </header>
+         <div class="options-controls">
+            <div class="option-item">
+                <label for="volume-slider">Master Volume:</label>
+                <input type="range" id="volume-slider" name="volume" min="0" max="100" value="75">
+                <span id="volume-value">75%</span>
+            </div>
+            <div class="option-item">
+                 <label for="difficulty-select">Difficulty:</label>
+                 <select id="difficulty-select" name="difficulty">
+                     <option value="easy">Easy</option>
+                     <option value="normal" selected>Normal</option>
+                     <option value="hard">Thinking with Portals</option>
+                 </select>
+            </div>
+            <!-- Add more options here if needed -->
+         </div>
+         <div class="options-navigation">
+             <!-- Button is better semantically for same-page actions -->
+             <button id="back-to-main-from-options" class="menu-item">Back</button>
+         </div>
+    </div>
+
+    <!-- Chamber Select Screen (Controls visibility via JS/CSS) -->
+    <div id="chamber-select-screen" class="chamber-select-container hidden">
+        <header class="menu-header">
+            <h2>Select Test Chamber</h2>
+        </header>
+
+        <div class="chamber-list">
+            <ul>
+                <!-- Unique data-chamber-id for identifying levels -->
+                <li><a href="#" class="chamber-select-item menu-item" data-chamber-id="01">Test Chamber 01 - Introduction</a></li>
+                <li><a href="#" class="chamber-select-item menu-item" data-chamber-id="02">Test Chamber 02 - Basic Portals</a></li>
+                <li><a href="#" class="chamber-select-item menu-item" data-chamber-id="03">Test Chamber 03 - Momentum</a></li>
+                <li><a href="#" class="chamber-select-item menu-item disabled" data-chamber-id="04">Test Chamber 04 - Locked</a></li>
+                 <!-- Add more chambers as needed -->
+            </ul>
+        </div>
+
+        <div class="chamber-select-navigation">
+             <button id="back-to-main-from-chambers" class="menu-item">Back</button>
+        </div>
+    </div>
+
+    <!-- Game View (Controls visibility via JS/CSS) -->
+    <div id="game-view" class="game-container hidden">
+        <!-- The canvas where Three.js will render the 3D scene -->
+        <canvas id="game-canvas"></canvas>
+
+        <!-- Overlay for UI elements like buttons, crosshair, etc. -->
+        <div class="game-ui">
+             <!-- Add crosshair or other static UI here if desired -->
+             <!-- <div class="crosshair">+</div> -->
+
+             <!-- Button to exit the current game/chamber -->
+             <button id="back-to-main-from-game" class="menu-item game-back-button">Exit Chamber</button>
+        </div>
+    </div>
+
+
+    <!-- Load the Menu JavaScript first -->
+    <script src="script.js"></script>
+    <!-- Load the Game (Three.js) JavaScript as a module -->
+    <script type="module" src="game.js"></script>
+</body>
+</html>
